@@ -1,7 +1,7 @@
 model: autoencoder
 
 batch_size: 4
-tree_depth: 3 # according to 512x512x512 to 128x128x128
+tree_depth: 3 # according to 512x512x512 -> 128x128x128
 voxel_size: 0.0025
 resolution: 512
 use_fvdb_loader: true

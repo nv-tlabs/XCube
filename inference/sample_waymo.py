@@ -54,7 +54,7 @@ config_coarse = "configs/waymo/train_diffusion_32x32x32_dense.yaml"
 ckpt_coarse = "checkpoints/waymo/coarse_diffusion/last.ckpt"
     
 config_fine = "configs/waymo/train_diffusion_256x256x256_sparse.yaml"
-ckpt_fine = "../wandb/sldm-scene-v2-2/6sq4u8z2/checkpoints/last_rewrite.ckpt"
+ckpt_fine = "checkpoints/waymo/fine_diffusion/last.ckpt"
 
 net_model = create_model_from_args(config_coarse, ckpt_coarse).cuda()
 net_model_c = create_model_from_args(config_fine, ckpt_fine).cuda()

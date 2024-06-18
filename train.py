@@ -180,25 +180,26 @@ if __name__ == '__main__':
     if program_args.nolog:
         program_args.logger_type = 'none'
 
-    if program_args.logger_type == 'wandb':
-        # ! auto detect resume from wandb
-        wname = program_args.wname
-        sep_pos = str(model_args.name).find('/')
-        project_name = model_args.name[:sep_pos]
-        run_name = model_args.name[sep_pos + 1:] + "/" + wname
+    # AUTO resume with wandb logger
+    ## uncomment if you want to use it and fill in your own <WANDB_USER_NAME>!
+    # if program_args.logger_type == 'wandb':
+    #     wname = program_args.wname
+    #     sep_pos = str(model_args.name).find('/')
+    #     project_name = model_args.name[:sep_pos]
+    #     run_name = model_args.name[sep_pos + 1:] + "/" + wname
 
-        check_wandb_name = "wdb:nvidia-toronto/xcube-%s/%s:last" % (project_name, run_name)
-        try:
-            print("Try to load from wandb:", check_wandb_name)
-            wdb_run, args_ckpt = wandb_util.get_wandb_run(check_wandb_name, wdb_base=program_args.wandb_base, default_ckpt="last")
-            assert args_ckpt is not None, "Please specify checkpoint version!"
-            assert args_ckpt.exists(), "Selected checkpoint does not exist!"
-            print("Load from wandb:", check_wandb_name)
-            program_args.resume = True
-            other_args[0] = check_wandb_name
-        except:
-            print("No wandb checkpoint found, start training from scratch")
-            pass
+    #     check_wandb_name = "<WANDB_USER_NAME>/xcube-%s/%s:last" % (project_name, run_name)
+    #     try:
+    #         print("Try to load from wandb:", check_wandb_name)
+    #         wdb_run, args_ckpt = wandb_util.get_wandb_run(check_wandb_name, wdb_base=program_args.wandb_base, default_ckpt="last")
+    #         assert args_ckpt is not None, "Please specify checkpoint version!"
+    #         assert args_ckpt.exists(), "Selected checkpoint does not exist!"
+    #         print("Load from wandb:", check_wandb_name)
+    #         program_args.resume = True
+    #         other_args[0] = check_wandb_name
+    #     except:
+    #         print("No wandb checkpoint found, start training from scratch")
+    #         pass
 
     # Force not to sync to shorten bootstrap time.
     if program_args.nosync:

@@ -19,6 +19,8 @@ For business inquiries, please visit our website and submit the form: [NVIDIA Re
 - 2024-06-18: Code and model released!
 
 ## Environment setup
+Note that we currently only support Linux. We welcome support for other platforms.
+
 **(Optional) Install libMamba for a huge quality of life improvement when using Conda**
 ```
 conda update -n base conda
@@ -52,7 +54,11 @@ cd ../..
 For docker users, we suggest using a base image from [here](https://github.com/fwilliams/openvdb/tree/feature/fvdb/fvdb#docker-image), and applying the above conda setup over it.
 
 ## Quickstart
-Download pretrained ckpt from [Google Drive]() and put them under `checkpoints`.
+Download pretrained checkpoints from [Google Drive](https://drive.google.com/drive/folders/1PEh0ofpSFcgH56SZtu6iQPC8xAxzhmke?usp=drive_link) and put them under `checkpoints`.
+Alternatively, we provide a script that could automatically download everything for you:
+```
+python inference/download_pretrain.py
+```
 
 **ShapeNet Inference:**
 ```
@@ -159,6 +165,11 @@ python train.py ./configs/shapenet/car/train_diffusion_128x128x128_sparse.yaml -
 # Waymo uncond
 python train.py ./configs/waymo/train_diffusion_256x256x256_sparse.yaml --wname 256x256x64_kld-0.3_semantic_cond --eval_interval 1 --gpus 8 --batch_size 8 --accumulate_grad_batches 4 --save_topk 1
 ```
+
+In addition, you can manually specify different training settings to obtain models that suit your needs. Common flags include:
+- `--wname`: Additional experiment name to specify for wandb logger.
+- `--batch_size`: num of batch **in total** for `autoencoder` and num of batch **per GPU** for `diffusion`.
+- `--logger_type`: we use `wandb` by default; `none` is also supported.
 
 ## License
 

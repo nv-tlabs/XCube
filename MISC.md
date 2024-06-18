@@ -9,6 +9,8 @@ Please refer [shapenet_example.py](./datagen/shapenet_example.py) for a scripts 
 python datagen/shapenet_example.py --num_vox 128
 python datagen/shapenet_example.py --num_vox 512
 ```
+<!-- (BETA) grid_from_mesh -->
+
 <img src="assets/shapenet_data.png"  width="100%">
 
 ### From Points

@@ -53,3 +53,4 @@ dependencies:
     - transformers
     - polyscope
     - trimesh
+    - gdown
