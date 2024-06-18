@@ -2,7 +2,7 @@
 Copyright (c) 2024, NVIDIA Corporation & affiliates. All rights reserved.
 
 
-NVIDIA Source Code License for NKSR
+NVIDIA Source Code License for XCube
 
 
 =======================================================================
