@@ -1,0 +1,54 @@
+model: autoencoder
+
+batch_size: 4
+tree_depth: 4 # according to 16x16x16
+voxel_size: 0.01
+resolution: 128
+use_fvdb_loader: true
+use_hash_tree: true # use hash tree means use early dilation (description in Sec 3.4) 
+
+# setup input
+use_input_normal: true
+use_input_semantic: false
+use_input_intensity: false
+
+# setup KL loss
+cut_ratio: 32 # reduce the dimension of the latent space
+kl_weight: 0.03 # activate when anneal is off
+normalize_kld: true
+enable_anneal: false
+kl_weight_min: 1e-7
+kl_weight_max: 0.03
+anneal_star_iter: 0
+anneal_end_iter: 70000 # need to adjust for different dataset
+
+supervision:
+  structure_weight: 20.0
+  normal_weight: 300.0
+  
+optimizer: "Adam"
+learning_rate:
+  init: 1.0e-4
+  decay_mult: 0.7
+  decay_step: 50000
+  clip: 1.0e-6
+weight_decay: 0.0
+grad_clip: 0.5
+
+network:
+  encoder:
+    c_dim: 32
+  unet:
+    target: "StructPredictionNet"
+    params:
+      in_channels: 32
+      num_blocks: ${tree_depth}
+      f_maps: 64
+      neck_dense_type: "HAND_CRAFTED"
+      neck_bound: [8, 8, 8]
+      num_res_blocks: 1
+      use_residual: false
+      order: "gcr"
+      is_add_dec: false
+      use_attention: false
+      use_checkpoint: false

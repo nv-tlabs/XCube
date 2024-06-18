@@ -1,0 +1,20 @@
+include_configs:
+  - ../../train/diffusion/diffusion_128x128x128_sparse.yaml
+  - chair.yaml
+
+name: 'shapenet/chair_diffusion_sparse'
+
+# normal concat cond
+use_normal_concat_cond: true
+num_classes: 3 # normal dim 3
+conditioning_key: "concat" # "none", "adm", "concat"
+
+use_pos_embed_world: false
+use_pos_embed: true
+
+vae_config: "configs/shapenet/chair/train_vae_128x128x128_sparse.yaml"
+vae_checkpoint: "checkpoints/chair/fine_vae/last.ckpt"
+
+network:
+  diffuser:
+    model_channels: 64 

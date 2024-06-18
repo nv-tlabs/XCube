@@ -1,0 +1,4 @@
+include_configs:
+  - ../data.yaml
+
+_shapenet_categories: ['03001627']

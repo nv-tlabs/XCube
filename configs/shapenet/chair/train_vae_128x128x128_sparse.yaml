@@ -1,0 +1,5 @@
+include_configs:
+  - ../../train/vae/vae_128x128x128_sparse.yaml
+  - chair.yaml
+
+name: 'shapenet/chair_VAE_sparse'

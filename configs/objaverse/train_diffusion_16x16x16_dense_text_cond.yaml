@@ -1,0 +1,20 @@
+include_configs:
+  - ../train/diffusion/diffusion_16x16x16_dense.yaml
+  - data.yaml
+
+resolution: 128
+name: 'shapenet/objaverse_diffusion_dense'
+
+# diffusion condition
+use_text_cond: true
+context_dim: 1024
+conditioning_key: "crossattn"
+
+vae_config: "configs/objaverse/train_vae_16x16x16_dense.yaml"
+vae_checkpoint: ""
+
+network:
+  diffuser:
+    model_channels: 256 
+    attention_resolutions: [1, 2, 4, 8]
+    channel_mult: [1, 2, 4, 4]

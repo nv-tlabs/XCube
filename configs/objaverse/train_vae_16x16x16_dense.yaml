@@ -1,0 +1,17 @@
+include_configs:
+  - ../train/vae/vae_16x16x16_dense.yaml
+  - data.yaml
+
+resolution: 128
+name: 'shapenet/objaverse_VAE_dense'
+
+# pretrained_weight: ""
+
+cut_ratio: 128
+enable_anneal: false
+kl_weight: 0.03
+
+network:
+  unet:
+    params:
+      f_maps: 128

@@ -1,0 +1,29 @@
+include_configs:
+  - ../train/diffusion/diffusion_128x128x128_sparse.yaml
+  - data.yaml
+
+resolution: 512
+name: 'shapenet/objaverse_diffusion_sparse'
+duplicate_num: 1
+
+conditioning_key: "c_crossattn"
+# text_cond
+context_dim: 1024
+use_text_cond: true
+
+# normal concat cond
+use_normal_concat_cond: true
+num_classes: 3 # normal dim 3
+
+use_pos_embed_world: false
+use_pos_embed: true
+
+vae_config: "configs/objaverse/train_vae_128x128x128_sparse.yaml"
+vae_checkpoint: ""
+
+network:
+  diffuser_name: "UNetModel_Sparse_CrossAttn" 
+  diffuser:
+    model_channels: 64
+    channel_mult: [1, 2, 2, 4]
+    attention_resolutions: [4, 8]

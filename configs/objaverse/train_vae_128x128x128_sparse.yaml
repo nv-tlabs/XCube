@@ -1,0 +1,19 @@
+include_configs:
+  - ../train/vae/vae_128x128x128_sparse.yaml
+  - data.yaml
+
+resolution: 512
+name: 'shapenet/objaverse_VAE_sparse'
+
+# pretrained_weight: ""
+
+cut_ratio: 32
+enable_anneal: false
+kl_weight: 0.3
+
+network:
+  unet:
+    params:
+      f_maps: 64
+      unstable_cutoff: true
+      unstable_cutoff_threshold: 0.3

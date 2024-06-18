@@ -1,0 +1,29 @@
+_waymo_path: "../data/waymo"
+
+train_dataset: WaymoDataset
+train_val_num_workers: 16
+train_kwargs:
+  base_path: ${_waymo_path}
+  resolution: ${resolution}
+  custom_name: ${_custom_name}
+  split: "train"
+  random_seed: 0
+
+val_dataset: WaymoDataset
+val_kwargs:
+  base_path: ${_waymo_path}
+  resolution: ${resolution}
+  custom_name: ${_custom_name}
+  split: "test"
+  random_seed: "fixed"
+
+test_dataset: WaymoDataset
+test_num_workers: 4
+test_kwargs:
+  base_path: ${_waymo_path}
+  resolution: ${resolution}
+  custom_name: ${_custom_name}
+  split: "test"
+  random_seed: "fixed"
+
+_custom_name: "waymo"

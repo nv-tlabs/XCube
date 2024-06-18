@@ -1,0 +1,28 @@
+include_configs:
+  - ../train/diffusion/diffusion_128x128x128_sparse.yaml
+  - waymo.yaml
+
+name: 'waymo/diffusion_sparse'
+
+# semantic concat cond
+use_semantic_cond: true
+num_classes: 32
+conditioning_key: "concat" # "none", "adm", "concat"
+
+use_pos_embed_world: false
+use_pos_embed_high: true
+
+vae_config: "configs/waymo/train_vae_256x256x256_sparse.yaml"
+vae_checkpoint: "checkpoints/waymo/fine_vae/last.ckpt"
+
+network:
+  diffuser:
+    image_size: [256, 256, 64]
+    model_channels: 64
+    channel_mult: [1, 2, 4, 4]
+    attention_resolutions: [8, 16]
+  cond_stage_model:
+    target: "SemanticEncoder"
+    params:
+      num_semantic: 23 
+      dim_semantic: 32

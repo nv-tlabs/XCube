@@ -1,0 +1,5 @@
+include_configs:
+  - ../../train/vae/vae_16x16x16_dense.yaml
+  - plane.yaml
+
+name: 'shapenet/plane_VAE_dense'

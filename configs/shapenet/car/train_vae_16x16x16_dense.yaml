@@ -1,0 +1,5 @@
+include_configs:
+  - ../../train/vae/vae_16x16x16_dense.yaml
+  - car.yaml
+
+name: 'shapenet/car_VAE_dense'

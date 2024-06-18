@@ -1,0 +1,6 @@
+test_set_shuffle: false
+batch_size: 1
+accumulate_grad_batches: 1
+visualize: false
+
+name: '--'

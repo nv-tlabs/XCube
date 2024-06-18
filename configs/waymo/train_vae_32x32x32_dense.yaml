@@ -1,0 +1,30 @@
+include_configs:
+  - ../train/vae/vae_16x16x16_dense.yaml
+  - waymo.yaml
+
+name: 'waymo/VAE_dense'
+
+# adjust data setting
+voxel_size: 0.4 # 256
+resolution: 256
+
+# adjust input setting - use semantic and intensity
+use_input_semantic: true
+use_input_intensity: true
+num_semantic: 23
+dim_semantic: 32
+
+# adjust supervision - add semantic supervision
+supervision:
+  semantic_weight: 20.0
+
+# adjust network
+cut_ratio: 64
+remain_h: true
+use_hash_tree: false # use_hash_tree conflict with remain_h
+
+network:
+  unet:
+    params:
+      neck_bound: [16, 16, 16]
+      pooling_level: [3] # corresponding to remain_h

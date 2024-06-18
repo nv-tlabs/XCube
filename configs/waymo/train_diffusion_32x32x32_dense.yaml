@@ -1,0 +1,18 @@
+include_configs:
+  - ../train/diffusion/diffusion_16x16x16_dense.yaml
+  - waymo.yaml
+
+name: 'waymo/diffusion_dense'
+
+vae_config: "configs/waymo/train_vae_32x32x32_dense.yaml"
+vae_checkpoint: "checkpoints/waymo/coarse_vae/last.ckpt"
+
+# adjust data setting
+voxel_size: 0.4 # 256
+resolution: 256
+
+# adjust network
+network:
+  diffuser:
+    image_size: 32 # use during testing
+    attention_resolutions: [2, 4, 8]

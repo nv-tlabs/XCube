@@ -1,0 +1,47 @@
+_shapenet_path: ""
+_split_path: ""
+_text_emb_path: ""
+_null_embed_path: "./assets/null_text_emb.pkl"
+max_text_len: 77
+text_embed_drop_prob: 0.1
+
+train_dataset: ObjaverseDataset
+train_val_num_workers: 16
+train_kwargs:
+  onet_base_path: ${_shapenet_path}
+  resolution: ${resolution}
+  custom_name: ${_custom_name}
+  split_base_path: ${_split_path}
+  split: "train"
+  text_emb_path: ${_text_emb_path}
+  null_embed_path: ${_null_embed_path}
+  max_text_len: ${max_text_len}
+  text_embed_drop_prob: ${text_embed_drop_prob} # ! classifier-free training
+  random_seed: 0
+
+val_dataset: ObjaverseDataset
+val_kwargs:
+  onet_base_path: ${_shapenet_path}
+  resolution: ${resolution}
+  custom_name: ${_custom_name}
+  split_base_path: ${_split_path}
+  split: "test"
+  text_emb_path: ${_text_emb_path}
+  null_embed_path: ${_null_embed_path}
+  max_text_len: ${max_text_len}
+  random_seed: "fixed"
+
+test_dataset: ObjaverseDataset
+test_num_workers: 8
+test_kwargs:
+  onet_base_path: ${_shapenet_path}
+  resolution: ${resolution}
+  custom_name: ${_custom_name}
+  split_base_path: ${_split_path}
+  split: "test"
+  text_emb_path: ${_text_emb_path}
+  null_embed_path: ${_null_embed_path}
+  max_text_len: ${max_text_len}
+  random_seed: "fixed"
+
+_custom_name: "objaverse"

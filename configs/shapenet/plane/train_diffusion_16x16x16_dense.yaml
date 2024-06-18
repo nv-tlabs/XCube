@@ -1,0 +1,8 @@
+include_configs:
+  - ../../train/diffusion/diffusion_16x16x16_dense.yaml
+  - plane.yaml
+
+name: 'shapenet/plane_diffusion_dense'
+
+vae_config: "configs/shapenet/plane/train_vae_16x16x16_dense.yaml"
+vae_checkpoint: "checkpoints/plane/coarse_vae/last.ckpt"

@@ -1,0 +1,65 @@
+model: diffusion
+
+vae_config: ""
+vae_checkpoint: ""
+
+voxel_size: 0.01
+resolution: 128
+
+# data info
+duplicate_num: 10 # repeat the dataset to save the time of building dataloader
+batch_size: 64
+accumulate_grad_batches: 4
+batch_size_val: 4
+train_val_num_workers: 16
+
+# diffusion - inference params
+use_ddim: true
+num_inference_steps: 100
+
+# diffusion - scheduler-related adjust params
+num_train_timesteps: 1000
+beta_start: 0.0001
+beta_end: 0.02
+beta_schedule: "linear"
+prediction_type: "v_prediction"
+
+# diffusion - scale by std
+scale_by_std: true
+scale_factor: 1.0
+
+ema: true
+ema_decay: 0.9999
+
+supervision:
+  mse_weight: 1.0
+
+optimizer: "Adam"
+learning_rate:
+  init: 5.0e-5
+  decay_mult: 1.0
+  decay_step: 2000000000 # use a constant learning rate
+  clip: 1.0e-6
+weight_decay: 0.0
+grad_clip: 0.5
+
+network:
+  diffuser_name: "UNetModel_Dense" 
+  diffuser:
+    dims: 3 # 3D conv
+    image_size: 16 # use during testing
+    model_channels: 192 
+    attention_resolutions: [1, 2, 4] # 16, 8, 4
+    num_res_blocks: 2
+    channel_mult: [1, 2, 4, 4]
+    num_heads: 8
+    use_scale_shift_norm: True
+    resblock_updown: True
+  scheduler:
+    num_train_timesteps: ${num_train_timesteps}
+    beta_start: ${beta_start}
+    beta_end: ${beta_end}
+    beta_schedule: ${beta_schedule} # cosine
+    variance_type: "fixed_small"
+    clip_sample: False
+    prediction_type: ${prediction_type} # epsilon

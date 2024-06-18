@@ -1,0 +1,5 @@
+include_configs:
+  - ../../train/vae/vae_128x128x128_sparse.yaml
+  - plane.yaml
+
+name: 'shapenet/plane_VAE_sparse'

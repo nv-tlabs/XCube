@@ -1,0 +1,29 @@
+include_configs:
+  - ../train/vae/vae_128x128x128_sparse.yaml
+  - waymo.yaml
+
+name: 'waymo/VAE_sparse'
+
+# adjust data setting
+voxel_size: 0.1 # 1024
+resolution: 1024
+
+# adjust input setting - use semantic and intensity
+use_input_semantic: true
+use_input_intensity: true
+num_semantic: 23
+dim_semantic: 32
+
+# adjust supervision - add semantic supervision
+kl_weight: 0.3
+kl_weight_max: 0.3
+supervision:
+  semantic_weight: 20.0
+
+# adjust network
+cut_ratio: 16
+
+network:
+  unet:
+    params:
+      neck_bound: [128, 128, 32]
