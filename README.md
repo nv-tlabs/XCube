@@ -110,6 +110,7 @@ Data download links:
 ```
 # ShapeNet chair
 python train.py ./configs/shapenet/chair/train_vae_16x16x16_dense.yaml --wname 16x16x16-kld-0.03_dim-16 --max_epochs 100 --cut_ratio 16 --gpus 8 --batch_size 32
+
 # ShapeNet car
 python train.py ./configs/shapenet/car/train_vae_16x16x16_dense.yaml --wname 16x16x16-kld-0.03_dim-16 --max_epochs 100 --cut_ratio 16 --gpus 8 --batch_size 32
 
