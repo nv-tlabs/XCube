@@ -34,8 +34,8 @@ class PCNNField(BaseField):
         super().to_(device)
         self.pc_field = self.pc_field.to(device)
 
-    def evaluate_f(self, xyz: torch.Tensor, grad: bool = False):
+    def evaluate_f(self, xyz, grad: bool = False):
         assert not grad, "PCNNField does not support gradient!"
-        _, idx = self.kdtree.query(xyz.detach().cpu().numpy())
+        _, idx = self.kdtree.query(xyz.jdata.detach().cpu().numpy())
         idx = torch.from_numpy(idx.astype(np.int64)).to(self.pc_field.device)
         return EvaluationResult(self.pc_field[idx])
