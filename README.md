@@ -38,13 +38,6 @@ cd XCube
 conda env create -f environment.yml
 conda activate xcube
 
-# Install sparse 3D deep learning framework 
-git clone https://github.com/fwilliams/openvdb.git
-cd openvdb && git checkout feature/fvdb && cd fvdb
-export MAX_JOBS=$(free -g | awk '/^Mem:/{jobs=int($4/2.5); if(jobs<1) jobs=1; print jobs}') # Optional
-pip install .
-cd ../..
-
 # Mesh extraction
 cd ext/nksr-cuda
 python setup.py develop
