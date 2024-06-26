@@ -42,7 +42,7 @@ conda activate xcube
 git clone https://github.com/fwilliams/openvdb.git
 cd openvdb && git checkout feature/fvdb && cd fvdb
 export MAX_JOBS=$(free -g | awk '/^Mem:/{jobs=int($4/2.5); if(jobs<1) jobs=1; print jobs}') # Optional
-python setup.py develop
+pip install .
 cd ../..
 
 # Mesh extraction
