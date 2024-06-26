@@ -102,9 +102,8 @@ We have prepared detailed instructions about data preparation and useful tricks 
 ## Training
 
 Data download links:
-- ShapeNet: Coming soon
+- ShapeNet: Data is available [here](https://drive.google.com/file/d/1PQmSomS1B7UR7wNuqp5RtgkdXo7stKzG/view?usp=sharing). Put the extracted folder as `../data/shapenet`. Or you chould change `_shapenet_path` in the [config](configs/shapenet/data.yaml).
 - Waymo: Coming soon
-<!-- - Put the extracted onet folder under `../data/shapenet`. -->
 
 ### (Coarse) Stage 1 
 **Training autoencoder models:**
