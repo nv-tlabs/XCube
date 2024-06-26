@@ -8,6 +8,7 @@ dependencies:
   - python=3.10
   - pytorch=2.2.0
   - pytorch-cuda=12.1
+  - numpy<2.0.0
   - tensorboard
   - pip
   - git
