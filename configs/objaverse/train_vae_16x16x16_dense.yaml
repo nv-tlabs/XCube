@@ -2,6 +2,7 @@ include_configs:
   - ../train/vae/vae_16x16x16_dense.yaml
   - data.yaml
 
+voxel_size: 0.0078125
 resolution: 128
 name: 'shapenet/objaverse_VAE_dense'
 

@@ -2,6 +2,7 @@ include_configs:
   - ../train/vae/vae_128x128x128_sparse.yaml
   - data.yaml
 
+voxel_size: 0.001953125
 resolution: 512
 name: 'shapenet/objaverse_VAE_sparse'
 

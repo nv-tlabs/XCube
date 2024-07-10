@@ -1,0 +1,34 @@
+include_configs:
+  - ../train/nksr_refine/train.yaml
+  - data.yaml
+
+name: 'shapenet/objaverse_nksr_refine'
+
+voxel_size: 0.00390625
+kernel_dim: 16
+
+interpolator:
+  n_hidden: 2
+  hidden_dim: 32
+
+feature: 'normal'
+
+structure_schedule:
+  start_step: 10
+  end_step: 100
+
+finetune_kernel_sdf: false
+finetune_neural_udf: true
+
+udf:
+  enabled: true
+
+# VAE config
+args_ckpt: '--'
+resolution: 512
+
+vae_noise_step_min: 200
+vae_noise_step_max: 400
+
+batch_size: 8
+accumulate_grad_batches: 1

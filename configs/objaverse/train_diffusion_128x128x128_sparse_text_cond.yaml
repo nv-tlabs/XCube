@@ -2,6 +2,7 @@ include_configs:
   - ../train/diffusion/diffusion_128x128x128_sparse.yaml
   - data.yaml
 
+voxel_size: 0.001953125
 resolution: 512
 name: 'shapenet/objaverse_diffusion_sparse'
 duplicate_num: 1
@@ -19,7 +20,7 @@ use_pos_embed_world: false
 use_pos_embed: true
 
 vae_config: "configs/objaverse/train_vae_128x128x128_sparse.yaml"
-vae_checkpoint: ""
+vae_checkpoint: "checkpoints/objaverse/fine_vae/last.ckpt"
 
 network:
   diffuser_name: "UNetModel_Sparse_CrossAttn" 
