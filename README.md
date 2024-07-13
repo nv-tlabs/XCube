@@ -49,7 +49,7 @@ For docker users, we suggest using a base image from [here](https://github.com/f
 
 ## Quickstart
 Download pretrained checkpoints from [Google Drive](https://drive.google.com/drive/folders/1PEh0ofpSFcgH56SZtu6iQPC8xAxzhmke?usp=drive_link) and put them under `checkpoints`.
-Alternatively, we provide a script that could automatically download everything for you:
+Alternatively, we provide a script that could automatically download everything for you (temporarily unavailable):
 ```
 python inference/download_pretrain.py
 ```
@@ -82,9 +82,11 @@ python visualize_scene.py -p results/{YOUR_PATH} -i {YOUR_ID}
 
 **Objaverse Inference:**
 ```
-# Text to 3D (coming soon)
+# Text to 3D
+python inference/sample_objaverse.py none --batch_len 4 --ema --use_ddim --ddim_step 100 --extract_mesh
 
-# MV to 3D (coming soon)
+# Visualize
+python visualize_object.py -p results/{YOUR_PATH} -i {YOUR_ID}
 ```
 
 > The released code has some differences from the version described in the paper: 
