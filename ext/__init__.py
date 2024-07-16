@@ -24,8 +24,14 @@ def load_torch_extension(name, additional_files=None, ignore_files=None, **kwarg
     cu_files = glob.glob(str(base_path / "*.cu"), recursive=True)
     cu_files = filter(path_should_keep, cu_files)
 
+    # Sanitize the name to avoid special characters
+    sanitized_name = name.replace(".", "_").replace("+", "_")
+
+    # Constructing the extension name, removing special characters
+    extension_name = f"xcube_torch_{torch.__version__}".replace(".", "_").replace("+", "_") + "_" + sanitized_name
+
     return load(
-        name=f"xcube_torch_{torch.__version__}".replace(".", "_") + name,
+        name=extension_name,
         sources=list(cpp_files) + list(cu_files) + [base_path / t for t in additional_files],
         verbose='COMPILE_VERBOSE' in os.environ.keys(),
         **kwargs
