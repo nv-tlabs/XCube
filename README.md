@@ -184,8 +184,7 @@ This work is made available under the [Nvidia Source Code License](LICENSE.txt).
 ## Related Works
 
 - Huang et al. 2023. [Neural Kernel Surface Reconstruction](https://research.nvidia.com/labs/toronto-ai/NKSR).
-<!-- - Williams et al. 2024. [𝑓VDB: A Deep-Learning Framework for Sparse, Large-Scale, and High-Performance Spatial Intelligence](https://github.com/AcademySoftwareFoundation/openvdb/pull/1808). -->
-
+- Williams et al. 2024. [𝑓VDB: A Deep-Learning Framework for Sparse, Large-Scale, and High-Performance Spatial Intelligence](https://arxiv.org/abs/2407.01781).
 
 ## Citation
 
