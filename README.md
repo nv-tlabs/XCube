@@ -45,7 +45,7 @@ cd openvdb
 git fetch origin pull/1808/head:feature/fvdb
 git checkout feature/fvdb
 rm fvdb/setup.py && cp ../assets/setup.py fvdb/
-cd fvdb && python setup.py develop
+cd fvdb && pip install .
 cd ../..
 
 # Mesh extraction
