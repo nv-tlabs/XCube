@@ -39,7 +39,7 @@ cd XCube
 conda env create -f environment.yml
 conda activate xcube
 
-# Install sparse 3D deep learning framework 
+# Install sparse 3D deep learning framework (require GPU later than Ampere)
 git clone https://github.com/AcademySoftwareFoundation/openvdb.git
 cd openvdb
 git fetch origin pull/1808/head:feature/fvdb
@@ -54,7 +54,7 @@ python setup.py develop
 cd ../..
 ```
 ### Docker Image
-For docker users, we suggest using a base image from [here](https://github.com/fwilliams/openvdb/tree/feature/fvdb/fvdb#docker-image), and applying the above conda setup over it.
+For docker users, we suggest using a base image from [here](https://github.com/fwilliams/openvdb/tree/fw/fvdb/fvdb#docker-image), and applying the above conda setup over it.
 
 ## Quickstart
 Download pretrained checkpoints from [Google Drive](https://drive.google.com/drive/folders/1PEh0ofpSFcgH56SZtu6iQPC8xAxzhmke?usp=drive_link) and put them under `checkpoints`.
