@@ -39,7 +39,7 @@ cd XCube
 conda env create -f environment.yml
 conda activate xcube
 
-# Install sparse 3D deep learning framework (require GPU later than Ampere)
+# Install fVDB (3D learning framework) (require GPU later than Ampere)
 git clone https://github.com/AcademySoftwareFoundation/openvdb.git
 cd openvdb
 git fetch origin pull/1808/head:feature/fvdb

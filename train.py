@@ -169,7 +169,6 @@ if __name__ == '__main__':
     remove_option(program_parser, '--accumulate_grad_batches')
     program_args, other_args = program_parser.parse_known_args()
 
-    loguru_logger.info(f"This is train_auto.py! Please note that you should use 300 instead of 300.0 for resuming.")
 
     model_parser = exp.ArgumentParserX(base_config_path='configs/default/param.yaml')
     model_args = model_parser.parse_args(other_args)
@@ -182,6 +181,7 @@ if __name__ == '__main__':
 
     # AUTO resume with wandb logger
     ## uncomment if you want to use it and fill in your own <WANDB_USER_NAME>!
+    # loguru_logger.info(f"This is train_auto.py! Please note that you should use 300 instead of 300.0 for resuming.")
     # if program_args.logger_type == 'wandb':
     #     wname = program_args.wname
     #     sep_pos = str(model_args.name).find('/')
