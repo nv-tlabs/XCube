@@ -17,6 +17,7 @@ For any other questions related to the model, please contact Xuanchi or Jiahui.
 
 ## News
 
+- 2024-10-27: Check out our NeurIPS 2024 work [SCube](https://research.nvidia.com/labs/toronto-ai/scube/) which extends XCube on large-scale scene reconstruction!
 - 2024-06-18: Code and model released!
 
 ## Environment setup
@@ -183,6 +184,7 @@ This work is made available under the [Nvidia Source Code License](LICENSE.txt).
 
 ## Related Works
 
+- Ren et al. 2024. [SCube: Instant Large-Scale Scene Reconstruction using VoxSplats](https://research.nvidia.com/labs/toronto-ai/scube/).
 - Huang et al. 2023. [Neural Kernel Surface Reconstruction](https://research.nvidia.com/labs/toronto-ai/NKSR).
 - Williams et al. 2024. [𝑓VDB: A Deep-Learning Framework for Sparse, Large-Scale, and High-Performance Spatial Intelligence](https://arxiv.org/abs/2407.01781).
 
