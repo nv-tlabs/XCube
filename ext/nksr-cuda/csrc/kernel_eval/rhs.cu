@@ -228,7 +228,8 @@ variable_list RhsEvaluation::backward(
     auto grid = ctx->saved_data["grid"].toCustomClass<fvdb::detail::GridBatchImpl>();
     torch::Tensor pts_data = ctx->saved_data["pts_data"].toTensor();
     torch::Tensor pts_offsets = ctx->saved_data["pts_offsets"].toTensor();
-    auto pts = fvdb::JaggedTensor::from_data_and_offsets(pts_data, pts_offsets);
+    torch::Tensor pts_list_ids = ctx->saved_data["pts_list_ids"].toTensor();
+    auto pts = fvdb::JaggedTensor::from_data_offsets_and_list_ids(pts_data, pts_offsets, pts_list_ids);
 
     Variable ptsKernel = ctx->saved_data["ptsKernel"].toTensor();
     Variable gridKernel = ctx->saved_data["gridKernel"].toTensor();
