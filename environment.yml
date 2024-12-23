@@ -1,13 +1,13 @@
 name: xcube
 channels:
   - pyg
-  - nvidia/label/cuda-12.1.0
+  - nvidia/label/cuda-12.4.1
   - pytorch
   - conda-forge
 dependencies:
   - python=3.10
-  - pytorch=2.2.0
-  - pytorch-cuda=12.1
+  - pytorch=2.4.1
+  - pytorch-cuda=12.4
   - numpy<2.0.0
   - tensorboard
   - pip
