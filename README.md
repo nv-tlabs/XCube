@@ -17,6 +17,7 @@ For any other questions related to the model, please contact Xuanchi or Jiahui.
 
 ## News
 
+- 2024-12-11: Also check out our latest research [InfiniCube](https://research.nvidia.com/labs/toronto-ai/infinicube/), which extends XCube to unbounded 3D generation!
 - 2024-10-27: Check out our NeurIPS 2024 work [SCube](https://research.nvidia.com/labs/toronto-ai/scube/) which extends XCube on large-scale scene reconstruction!
 - 2024-06-18: Code and model released!
 
