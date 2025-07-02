@@ -426,7 +426,8 @@ variable_list MatrixBuilding::backward(AutogradContext *ctx, variable_list grad_
     
     torch::Tensor ptsPos_data = ctx->saved_data["ptsPos_data"].toTensor();
     torch::Tensor ptsPos_offsets = ctx->saved_data["ptsPos_offsets"].toTensor();
-    auto ptsPos = fvdb::JaggedTensor::from_data_and_offsets(ptsPos_data, ptsPos_offsets);
+    torch::Tensor ptsPos_list_ids = ctx->saved_data["ptsPos_list_ids"].toTensor();
+    auto ptsPos = fvdb::JaggedTensor::from_data_offsets_and_list_ids(ptsPos_data, ptsPos_offsets, ptsPos_list_ids);
 
     Variable ptsKernelI = ctx->saved_data["ptsKernelI"].toTensor();
     Variable ptsKernelJ = ctx->saved_data["ptsKernelJ"].toTensor();

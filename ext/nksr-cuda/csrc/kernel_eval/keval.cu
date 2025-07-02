@@ -343,10 +343,10 @@ variable_list KernelEvaluation::forward(
     // Prepare output
     auto opts = torch::TensorOptions().dtype(queryKernel.dtype())
             .device(queryKernel.device());
-    torch::Tensor outFunc = torch::zeros(query.size(0), opts);
+    torch::Tensor outFunc = torch::zeros(query.rsize(0), opts);
     torch::Tensor outGradFunc = torch::zeros({0, 3}, opts);
     if (grad) {
-        outGradFunc = torch::zeros({query.size(0), 3}, opts);
+        outGradFunc = torch::zeros({query.rsize(0), 3}, opts);
     }
 
     FVDB_DISPATCH_KERNEL_DEVICE(query.device(), [&]() {
@@ -363,7 +363,8 @@ variable_list KernelEvaluation::backward(AutogradContext *ctx, variable_list gra
 
     torch::Tensor query_data = ctx->saved_data["query_data"].toTensor();
     torch::Tensor query_offsets = ctx->saved_data["query_offsets"].toTensor();
-    auto query = fvdb::JaggedTensor::from_data_and_offsets(query_data, query_offsets);
+    torch::Tensor query_list_ids = ctx->saved_data["query_list_ids"].toTensor();
+    auto query = fvdb::JaggedTensor::from_data_offsets_and_list_ids(query_data, query_offsets, query_list_ids);
 
     Variable queryKernel = ctx->saved_data["queryKernel"].toTensor();
     Variable gridKernel = ctx->saved_data["gridKernel"].toTensor();
