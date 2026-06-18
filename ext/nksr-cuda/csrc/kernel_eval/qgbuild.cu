@@ -763,13 +763,13 @@ variable_list QgBuilding::forward(
 
     // Prepare output
     auto opts = torch::TensorOptions().device(pts.device());
-    torch::Tensor indexer = torch::full({pts.size(0), 27}, -1, opts.dtype(torch::kInt32));
+    torch::Tensor indexer = torch::full({pts.rsize(0), 27}, -1, opts.dtype(torch::kInt32));
 
     torch::Tensor qg;
     if (grad) {
-        qg = torch::full({pts.size(0), 27, 3}, 0.0, opts.dtype(pts.dtype()));
+        qg = torch::full({pts.rsize(0), 27, 3}, 0.0, opts.dtype(pts.dtype()));
     } else {
-        qg = torch::full({pts.size(0), 27}, 0.0, opts.dtype(pts.dtype()));
+        qg = torch::full({pts.rsize(0), 27}, 0.0, opts.dtype(pts.dtype()));
     }
 
     ctx->mark_non_differentiable({indexer});
@@ -787,7 +787,8 @@ variable_list QgBuilding::backward(AutogradContext *ctx, variable_list grad_outp
     auto grid = ctx->saved_data["grid"].toCustomClass<fvdb::detail::GridBatchImpl>();
     torch::Tensor pts_data = ctx->saved_data["pts_data"].toTensor();
     torch::Tensor pts_joffsets = ctx->saved_data["pts_offsets"].toTensor();
-    auto pts = fvdb::JaggedTensor::from_data_and_offsets(pts_data, pts_joffsets);
+    torch::Tensor pts_list_ids = ctx->saved_data["pts_list_ids"].toTensor();
+    auto pts = fvdb::JaggedTensor::from_data_offsets_and_list_ids(pts_data, pts_joffsets, pts_list_ids);
 
     Variable ptsKernel = ctx->saved_data["ptsKernel"].toTensor();
     Variable gridKernel = ctx->saved_data["gridKernel"].toTensor();
